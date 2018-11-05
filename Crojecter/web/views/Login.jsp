@@ -44,9 +44,9 @@
 			<input type="password" name="password" placeholder="****" style="width:180px"/></div>
 			<br><input type="submit" value="로그인" /><br>
 			<div style="margin: 10px 10px 10px 10px;" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-			<p style="display:inline-block;"><a href="">비밀번호 찾기</a></p>
+			<p style="display:inline-block;"><a href="./SearchPassword.jsp">비밀번호 찾기</a></p>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<p style="display:inline-block;"><a href="">회원가입</a></p>
+			<p style="display:inline-block;"><a href="./SignUp.jsp">회원가입</a></p>
 		</div>
 	</form>
 	

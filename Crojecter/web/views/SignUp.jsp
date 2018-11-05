@@ -45,7 +45,7 @@
 			
 			<hr />
 			<br /><p>&nbsp;이미 계정이 있으신가요?<br>
-			&nbsp;<a href="../main.html" style="color:red; text-decoration:none;">기존 계정으로 로그인하기</a></p><br />
+			&nbsp;<a href="./Login.jsp" style="color:red; text-decoration:none;">기존 계정으로 로그인하기</a></p><br />
 		</div>
 	</form>
 	<script>
