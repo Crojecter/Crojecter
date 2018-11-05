@@ -37,6 +37,12 @@ public class Member implements Serializable {
 		Mname = mname;
 	}
 	
+	public Member(String memail, String mpwd) {
+		super();
+		Memail = memail;
+		Mpwd = mpwd;
+	}
+
 	public int getMid() {
 		return Mid;
 	}
