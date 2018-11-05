@@ -117,6 +117,8 @@
 			
 			if(email == emailChk) {
 				$("#emailCheck").css("background-color", "#B7F400");
+			} else if(emailChk == "") {
+				$("#emailCheck").css("background-color", "white");
 			} else {
 				$("#emailCheck").css("background-color", "#FFA5A5");
 			}
@@ -128,11 +130,13 @@
 			
 			if(pwd != "" && pwdChk != "" && pwd == pwdChk) {
 				pChk = 1;
-				$("#password").css("background-color", "#B7F400");
+				//$("#password").css("background-color", "#B7F400");
 				$("#passwordCheck").css("background-color", "#B7F400");
+			} else if(pwdChk == "") {
+				$("#passwordCheck").css("background-color", "white");
 			} else {
 				pChk = 0;
-				$("#password").css("background-color", "#FFA5A5");
+				//$("#password").css("background-color", "#FFA5A5");
 				$("#passwordCheck").css("background-color", "#FFA5A5");
 			}
 		}

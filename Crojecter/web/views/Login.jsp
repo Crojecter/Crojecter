@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.login_signup.model.vo.Member"%>
+<% Member m = (Member)session.getAttribute("member"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
 </style>
 </head>
 <body>
-	<form action="login.do" method="post">
+	<form action="<%=request.getContextPath()%>/login.do" method="post">
 		<div style="border:1px solid gray; height:auto; width:300px;" align="center">
 			<br><label>COPYRIGHT</label><br><br>
 			<div><img src="../resources/images/user.png" />
