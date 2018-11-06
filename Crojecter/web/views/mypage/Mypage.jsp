@@ -21,15 +21,12 @@
 			<div style="margin: 10px 10px 1px 10px;" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 			<hr />
 			<label>이름</label><br>
-			<input type="text" name="userName"/><%= m.getMname() %><br>
+			<input type="text" name="userName"/ value="홍길동"><br>
 			<br><label>이메일 주소</label><br>
-			<input type="email" name="email"/><%= m.getMemail() %><br>
-			<input type="email" name="emailCheck"/><br>
+			<input type="email" name="email"/><br>
 			<br><label>비밀번호</label><br>
 			<input type="password" name="password" value="required"><br>
 			<input type="password" name="passwordCheck" value="required"/><br>
-			<br><label>호두</label><br>
-			<input type="text" name="houd" /><%= m.getMhodu() %><br>
 			<br>
 			<div class="btns" align="center">
 				<div id="updateBtn" onclick="updateMember();">수정하기</div> &nbsp;
@@ -42,7 +39,7 @@
 	}
 	
 	function deleteMember() {
-		location.href = "/myWeb/mDelete.me?mid=<%=m.getMid()%>";
+		location.href = "/myWeb/mDelete.me?mid=";
 	}
 	</script>
 </body>
