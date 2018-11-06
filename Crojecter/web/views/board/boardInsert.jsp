@@ -1,82 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-    import="com.kh.login_signup.model.vo.*"%>
-<% Member m = (Member)session.getAttribute("member");%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="kr">
 <head>
 <meta charset="UTF-8">
-<title>게시글 작성</title>
-<!-- 제이쿼리 파일 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>게시물 업로드 페이지</title>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+	  
 <style>
-	.outer {
-		width:900px;
-		height:500px;
-		background:black;
-		color:white;
-		margin-left:auto;
-		margin-right:auto;
-		margin-top:50px;
+	body{
+		font-family: 'Nanum Gothic', sans-serif;
 	}
-	table {
-		padding: 15px;
-		border:1px solid white;
+	.sidebar{
+		width: 100%; 
+		height: 50px;
 	}
-
-	.tableArea {
-		width:500px;
-		height:350px;
-		margin-left:auto;
-		margin-right:auto;
+	
+	#insertBtn{
+		 width: 100%; 
+		 height: 50px;
+		 font-size: 20px;
 	}
 </style>
-
 </head>
+
+
 <body>
-	<%-- <%@ include file="" %> --%>
-	<% if (m != null) { %>
-	<div class="outer">
-		<br>
-		<h2 align="center">게시판 작성</h2>
-		<div class="tableArea">
-			<form action="<%= request.getContextPath() %>/bInsert.bo" 
-			      method="post" enctype="multipart/form-data">
-				<table>
-					<tr>
-						<td>제목 </td>
-						<td colspan="3"><input type="text" size="51" name="title"></td>
-					</tr>
-					<tr>
-						<td>작성자 </td>
-						<td colspan="3"><%= m.getUserName() %>
-							<input type="hidden" name="userId" value="<%= m.getUserId() %>"/>
-						</td>
-					</tr>
-					<tr>
-						<td>첨부파일 </td>
-						<td colspan="3">
-							<input type="file" name="file" id="file" />
-						</td>
-					</tr>
-					<tr>
-						<td>내용 </td>
-						<td colspan="3">
-							<textarea name="content" cols="52" rows="15" style="resize:none;"></textarea>
-						</td>
-					</tr>
-				</table>
-				<br>
-				<div align="center">
-					<button type="reset">취소하기</button>
-					<button type="submit">등록하기</button>
-				</div>
-			</form>
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-md-1"></div>
+		<div class="col-md-8">
+			<div id="summernote">
+				<p><br><br>당신만의 창작물을 작성해주세요.</p>
+			</div>
 		</div>
+		<div class="col-md-2">
+			<select class="sidebar" name="category" id="category">
+				<option value="" disabled selected>카테고리 선택</option>
+				<option value="c1">IMAGE</option>
+				<option value="c2">VIDEO</option>
+				<option value="c3">AUDIO</option>
+				<option value="c4">TEXT</option>
+			</select> 
+			<select class="sidebar" name="ccl" id="ccl">
+				<option value="" disabled selected>CCL 선택</option>
+				<option value="ccl1">저작자 표시</option>
+				<option value="ccl2">저작자-변경금지</option>
+				<option value="ccl3">저작자-동일조건변경허락</option>
+				<option value="ccl4">저작자-비영리</option>
+				<option value="ccl5">저작자-비영리-변경금지</option>
+				<option value="ccl6">저작자-비영리-동일조건변경허락</option>
+			</select> 
+			<input type="text" placeholder="태그 입력(,로 구분)" style="width: 100%; height: 150px">
+
+			<button class="btn btn-success" id="insertBtn" onclick="showContent();">업로드</button>
+		</div>
+		<div class="col-md-1"></div>
 	</div>
-	<% } else { 
-		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
-	 } %>
-	<%-- <%@ include file="../common/footer.jsp" %> --%>
+	
+	<div class="output"></div> 	<%--출력물을 보여주는 임시 div --%> 
+
+	<script>
+		$(document).ready(function() {
+			$('#summernote').summernote();
+		});
+		
+		$('#summernote').summernote({
+			  height: 500,                 // set editor height
+			  minHeight: null,             // set minimum height of editor
+			  maxHeight: null,             // set maximum height of editor
+			  focus: true,                  // set focus to editable area after initializing summernote
+			});
+		
+		function showContent() {
+            $('.output').html($('#summernote').summernote('code'));
+        }
+	</script>
 </body>
 </html>
