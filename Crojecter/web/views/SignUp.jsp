@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
 <title>CopyRight 홈페이지에 오신걸 환영합니다.</title>
 <style>
 	input, label{
@@ -115,7 +115,8 @@
 						$("#email").css("background-color", "#FFA5A5");
 					}
 				}
-			});			
+			});		
+			memberVerify();
 		}
 		
 		function checkedEmail() {
