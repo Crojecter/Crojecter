@@ -29,4 +29,22 @@ public class MemberService {
 		
 	}
 
+<<<<<<< HEAD
+	public Member selectMember(Member m) {
+
+		con = getConnection();
+		
+		Member result = mDao.selectMember(con, m);
+		
+		close(con);
+		
+		if(result != null) commit(con);
+		else rollback(con);
+		
+		return result;
+
+	}
+
+=======
+>>>>>>> refs/heads/master
 }

@@ -1,4 +1,4 @@
-package com.kh.login_signup.controller;
+package com.kh.jsp.mypage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,21 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.kh.login_signup.model.service.MemberService;
-import com.kh.login_signup.model.vo.Member;
+import com.kh.jsp.member.model.service.MemberService;
+import com.kh.jsp.member.model.vo.Member;
 
 /**
- * Servlet implementation class signUp
+ * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/signUp.do")
-public class signUp extends HttpServlet {
+@WebServlet("/mDelete.me")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public signUp() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,26 +30,27 @@ public class signUp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nickName = request.getParameter("nickName");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		Member m = new Member(email, password, nickName);
-		
 		MemberService ms = new MemberService();
+		HttpSession session = request.getSession(false);
 		
-		int result = ms.signUpMember(m);
+		Member m = (Member)session.getAttribute("member");
 		
-		if(result > 0) {
-			System.out.println("회원가입 성공");
-<<<<<<< HEAD
-			response.sendRedirect("/crojecter");
-=======
-			response.sendRedirect("main.jsp");
->>>>>>> refs/heads/master
-			request.setAttribute("member", m);
-		} else {
-			System.out.println("회원가입 실패");
+		System.out.println("회원 기존 정보 : "+session.getAttribute("member"));
+		
+		try{
+			ms.deleteMember(m.getUserId());
+		
+			System.out.println("회원 탈퇴 완료! : "+m);
+			
+			session.invalidate();
+			
+			response.sendRedirect("index.jsp");
+			
+		} catch(Exception e) {
+			
+			request.setAttribute("msg", "회원 탈퇴 중 에러가 발생하였습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
 		}
 	}
 

@@ -1,26 +1,27 @@
-package com.kh.login_signup.controller;
+package com.kh.ajax.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.login_signup.model.service.MemberService;
-import com.kh.login_signup.model.vo.Member;
+import com.kh.ajax.model.service.Service;
 
 /**
- * Servlet implementation class signUp
+ * Servlet implementation class CheckEmail
  */
-@WebServlet("/signUp.do")
-public class signUp extends HttpServlet {
+@WebServlet("/checkEmail.do")
+public class CheckEmail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public signUp() {
+    public CheckEmail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,27 +30,20 @@ public class signUp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nickName = request.getParameter("nickName");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
 		
-		Member m = new Member(email, password, nickName);
+		String email = request.getParameter("eMail");
+		PrintWriter out = response.getWriter();
 		
-		MemberService ms = new MemberService();
+		int result = new Service().checkEmail(email);
 		
-		int result = ms.signUpMember(m);
-		
-		if(result > 0) {
-			System.out.println("회원가입 성공");
-<<<<<<< HEAD
-			response.sendRedirect("/crojecter");
-=======
-			response.sendRedirect("main.jsp");
->>>>>>> refs/heads/master
-			request.setAttribute("member", m);
+		if(result == 0){
+			// 이메일 중복 안됨
+			out.print("success");
 		} else {
-			System.out.println("회원가입 실패");
+			// 이메일 중복됨
+			out.print("fail");
 		}
+		
 	}
 
 	/**
