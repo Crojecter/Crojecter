@@ -42,7 +42,8 @@ public class Login extends HttpServlet {
 		if(m != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", m);
-			response.sendRedirect("Login.jsp");
+			response.sendRedirect("/crojecter");
+			System.out.println("로그인 성공");
 		} else {
 			System.out.println("로그인 실패");
 		}

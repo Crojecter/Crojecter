@@ -40,7 +40,7 @@
 		<div style="border:1px solid gray; height:auto; width:300px;" align="center">
 			<br><label>COPYRIGHT</label><br><br>
 			<div><img src="../resources/images/user.png" />
-			<input type="email" name="email" placeholder="Username" style="width:180px"/></div>
+			<input type="email" name="email" placeholder="User-email" style="width:180px"/></div>
 			<div><img src="../resources/images/pw.png" />
 			<input type="password" name="password" placeholder="****" style="width:180px"/></div>
 			<br><input type="submit" value="로그인" /><br>
