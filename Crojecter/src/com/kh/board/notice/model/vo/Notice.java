@@ -1,4 +1,4 @@
-package com.kh.board.notice.model;
+package com.kh.board.notice.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;

@@ -1,4 +1,4 @@
-package com.kh.board.gallery.model;
+package com.kh.board.gallery.model.vo;
 
 import java.io.Serializable;
 

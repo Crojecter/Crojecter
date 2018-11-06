@@ -1,4 +1,4 @@
-package com.kh.board.project.model;
+package com.kh.board.project.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
