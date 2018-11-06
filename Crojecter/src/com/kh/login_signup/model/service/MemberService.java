@@ -29,6 +29,7 @@ public class MemberService {
 		
 	}
 
+<<<<<<< HEAD
 	public Member selectMember(Member m) {
 
 		con = getConnection();
@@ -44,4 +45,6 @@ public class MemberService {
 
 	}
 
+=======
+>>>>>>> refs/heads/master
 }

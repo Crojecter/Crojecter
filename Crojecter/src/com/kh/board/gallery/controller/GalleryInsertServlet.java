@@ -1,4 +1,4 @@
-package com.kh.login_signup.controller;
+package com.kh.board.gallery.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.login_signup.model.service.MemberService;
-import com.kh.login_signup.model.vo.Member;
-
 /**
- * Servlet implementation class signUp
+ * Servlet implementation class GalleryInsertServlet
  */
-@WebServlet("/signUp.do")
-public class signUp extends HttpServlet {
+@WebServlet("/gInsert.ga")
+public class GalleryInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public signUp() {
+    public GalleryInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,27 +26,8 @@ public class signUp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nickName = request.getParameter("nickName");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		Member m = new Member(email, password, nickName);
-		
-		MemberService ms = new MemberService();
-		
-		int result = ms.signUpMember(m);
-		
-		if(result > 0) {
-			System.out.println("회원가입 성공");
-<<<<<<< HEAD
-			response.sendRedirect("/crojecter");
-=======
-			response.sendRedirect("main.jsp");
->>>>>>> refs/heads/master
-			request.setAttribute("member", m);
-		} else {
-			System.out.println("회원가입 실패");
-		}
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
